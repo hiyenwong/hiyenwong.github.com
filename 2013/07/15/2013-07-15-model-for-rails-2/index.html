@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Model-for-rails(2) | 無名之島</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="#Migeration#Migeration是一种可以随时改变数据模式的一种途径。通过使用Ruby DSL,从而摆脱了SQL的编写，从而使得数据库独立。Migeration保存着你历史数据结构，ActiveRecord会通过更新db/schema.rb来同步更新你的数据库结构。 ##创建一个标准的Migration##使用rails g migration MIGRATION_NAME用来创建一个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Model-for-rails(2)">
+<meta property="og:url" content="http://hiyenwong.github.io/2013/07/15/2013-07-15-model-for-rails-2/index.html">
+<meta property="og:site_name" content="無名之島">
+<meta property="og:description" content="#Migeration#Migeration是一种可以随时改变数据模式的一种途径。通过使用Ruby DSL,从而摆脱了SQL的编写，从而使得数据库独立。Migeration保存着你历史数据结构，ActiveRecord会通过更新db/schema.rb来同步更新你的数据库结构。 ##创建一个标准的Migration##使用rails g migration MIGRATION_NAME用来创建一个">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-19T12:50:50.717Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Model-for-rails(2)">
+<meta name="twitter:description" content="#Migeration#Migeration是一种可以随时改变数据模式的一种途径。通过使用Ruby DSL,从而摆脱了SQL的编写，从而使得数据库独立。Migeration保存着你历史数据结构，ActiveRecord会通过更新db/schema.rb来同步更新你的数据库结构。 ##创建一个标准的Migration##使用rails g migration MIGRATION_NAME用来创建一个">
+  
+    <link rel="alternate" href="/atom.xml" title="無名之島" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">無名之島</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://hiyenwong.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2013-07-15-model-for-rails-2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/07/15/2013-07-15-model-for-rails-2/" class="article-date">
+  <time datetime="2013-07-15T07:08:00.000Z" itemprop="datePublished">2013-07-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Rails/">Rails</a>►<a class="article-category-link" href="/categories/Rails/ruby/">ruby</a>►<a class="article-category-link" href="/categories/Rails/ruby/model/">model</a>►<a class="article-category-link" href="/categories/Rails/ruby/model/migration/">migration</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Model-for-rails(2)
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#Migeration#<br>Migeration是一种可以随时改变数据模式的一种途径。通过使用Ruby DSL,从而摆脱了SQL的编写，从而使得数据库独立。Migeration保存着你历史数据结构，ActiveRecord会通过更新<code>db/schema.rb</code>来同步更新你的数据库结构。</p>
+<p>##创建一个标准的Migration##<br>使用<code>rails g migration MIGRATION_NAME</code>用来创建一个标准的空migration.</p>
+<ul>
+<li>如果你的migration名字是’AddXXXToyyy’或是’RemoveXXXToYYY’,那么migration会自动在文档里创建<code>add_column</code>或是<code>remove_column</code></li>
+<li>如果你的migration名字是’CreateXXX’那么他将自动在文档里创建<code>create_table XXX</code></li>
+</ul>
+<p>同样如果你的名字是AddXXXRefToYYY,就会自动添加<code>add_reference :xxx, :yyy, index:true</code></p>
+<p>如果CreateJoinTableNNNN XXX YYY,则会自动添加<code>create_join_table :xxx,:yyy</code>,实际上，他会生成一张表讲带有xxx_id和yyy_id.</p>
+<p>另外可以通过<code>{}</code>来限制起最大值和多态性比如<code>$ rails generate migration AddDetailsToProducts price:decimal{5,2} supplier:references{polymorphic}</code></p>
+<p>##使用change方法 ##<br>以下方法支持change</p>
+<ul>
+<li>add_column</li>
+<li>add_index</li>
+<li>add_reference</li>
+<li>add_timestamps</li>
+<li>create_table</li>
+<li>create_join_table</li>
+<li>drop_table (must supply a block)</li>
+<li>drop_join_table (must supply a block)</li>
+<li>remove_timestamps</li>
+<li>rename_column</li>
+<li>rename_index</li>
+<li>remove_reference</li>
+<li>rename_table</li>
+</ul>
+<p>##回滚migrations##<br>每个生成的migration都会根据时间自动生成版本号标签，你可以通过<code>rake db:migrate VERSION=20080906120000</code> 来回到所要的版本号，如果你只是要回滚到最后一个版本，则可以<code>rake db:rollback</code>,或是在最后第三个版本，则可以<code>rake db:rollback STEP=3</code></p>
+<p>##REST DB##<br>REST数据其实很简单，只要执行<code>rake db:rest</code>就可以了</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hiyenwong.github.io/2013/07/15/2013-07-15-model-for-rails-2/" data-id="cjvuyam13000hm6q3ibu22vfw" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2013/08/11/2013-08-11-rails-post/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          rails中post
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2013/07/15/2013-07-15-model-for-rails-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">model for rails(1)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Rails/">Rails</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Rails/model/">model</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Rails/model/ruby/">ruby</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Rails/ruby/">ruby</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Rails/ruby/model/">model</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Rails/ruby/model/migration/">migration</a></li></ul></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/TDD/">TDD</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/TDD/Rails/">Rails</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/TDD/Rails/test/">test</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/TDD/Rails/test/ruby/">ruby</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/TDD/Rails/test/ruby/rspc/">rspc</a></li></ul></li></ul></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/constant/">constant</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/constant/rails/">rails</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/json/">json</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/json/jquery/">jquery</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/json/jquery/javascript/">javascript</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/linux/redhat/">redhat</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/linux/redhat/RHCE/">RHCE</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/mamp/">mamp</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/mamp/mysql/">mysql</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/mamp/mysql/ruby/">ruby</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/mamp/mysql/ruby/mac/">mac</a></li></ul></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/php/">php</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/rails/">rails</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/rails/pagination/">pagination</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/rails/pagination/ruby/">ruby</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/rails/ruby/">ruby</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/rails/ruby/post/">post</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/rails/ruby/post/mvc/">mvc</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/rails/ruby/post/mvc/controller/">controller</a></li></ul></li></ul></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/redis/">redis</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/redis/rails/">rails</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/rvm/">rvm</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/rvm/pow/">pow</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/rvm/pow/rails/">rails</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/vim/">vim</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/vim/linux/">linux</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">November 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">September 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">July 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2014/12/04/redis/">redis at rails </a>
+          </li>
+        
+          <li>
+            <a href="/2014/08/30/2014-08-30-make-octopress/">制作octopress</a>
+          </li>
+        
+          <li>
+            <a href="/2014/03/20/2014-03-20-pow-for-mac/">pow for mac</a>
+          </li>
+        
+          <li>
+            <a href="/2013/11/29/2013-11-29-about-pagination-on-rails/">关于Rails下的分页数据</a>
+          </li>
+        
+          <li>
+            <a href="/2013/09/18/2013-09-18-const/">custom library and define constant at rails 4</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Hi Yen Wong<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
