@@ -1,0 +1,405 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+  
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>pow for mac | 無名之島</title>
+  <meta name="author" content="Hi Yen Wong">
+  
+  <meta name="description" content="Pow 介绍Pow 简单的说是一个可以实时快速将rails在mac系统中进行部署测试的插件，你只需要做几个简单设置，就可以通过特定的域名进行访问。
+Pow 安装和配置安装pow1$ curl get.pow.cx | sh
+卸载pow1$ curl get.pow.cx/uninstall.sh |">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="pow for mac">
+  <meta property="og:site_name" content="無名之島">
+
+  
+    <meta property="og:image" content>
+  
+
+  
+    <meta http-equiv="Content-Language" content="en">
+  
+
+  <link href="/img/favicon.png" rel="icon">
+  
+    <link rel="apple-touch-icon" href="/img/apple-icon.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/apple-icon.png">
+    
+
+  <link rel="alternate" href="/atom.xml" title="無名之島" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  
+  <style type="text/css">
+  /* Tim Pietrusky advanced checkbox hack (Android <= 4.1.2) */
+body{ -webkit-animation: bugfix infinite 1s; }
+@-webkit-keyframes bugfix { from {padding:0;} to {padding:0;} }
+
+  
+
+  
+    article .post-content-index .entry{max-height: 550px; overflow:hidden;}
+  
+</style>
+
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+ 
+</script>
+
+
+
+
+  
+  
+</head>
+</html>
+
+<body>
+  <header id="header" class="inner"><div class="padding">
+	<div class="alignleft logo">
+	  <h1><a href="/">無名之島</a></h1>
+	</div>
+	<nav id="main-nav" class="alignright">
+		<input type="checkbox" id="toggle">
+		<label for="toggle" class="toggle" data-open="Main Menu" data-close="Close Menu" onclick><i class="fa fa-bars"></i></label>
+	  <ul class="menu">
+	    
+	      <li><a href="/">Home</a></li>
+	    
+	      <li><a href="/archives">Archives</a></li>
+	    
+	    
+	  </ul>
+	</nav>
+	<div class="clearfix"></div>
+</div>
+</header>
+  <div id="page-heading-wrap">
+  	<div class="inner">
+      <div class="padding">
+    		
+          <h1>pow for mac</h1>
+          <ul>
+            <li>
+              <span class="heading-span">Posted on: </span>
+              <time datetime="2014-03-20T08:30:00.000Z">2014-03-20</time>
+            </li>
+            
+              <li>
+                <span class="heading-span">By: </span>
+
+                
+                  <a href="/">Hi Yen Wong</a>
+                
+
+              </li>
+            
+            <li>
+              <span class="heading-span">With: </span>
+              
+            </li>
+          </ul>
+        
+      </div>
+  	</div>
+  </div>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper" class="padding"><article class="post">
+  
+  
+    <div class="post-content">
+  
+      
+      <div class="entry">
+        
+          <h2 id="Pow-介绍"><a href="#Pow-介绍" class="headerlink" title="Pow 介绍"></a>Pow 介绍</h2><p>Pow 简单的说是一个可以实时快速将rails在mac系统中进行部署测试的插件，你只需要做几个简单设置，就可以通过特定的域名进行访问。</p>
+<h2 id="Pow-安装和配置"><a href="#Pow-安装和配置" class="headerlink" title="Pow 安装和配置"></a>Pow 安装和配置</h2><h3 id="安装pow"><a href="#安装pow" class="headerlink" title="安装pow"></a>安装pow</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl get.pow.cx | sh</span><br></pre></td></tr></table></figure>
+<h2 id="卸载pow"><a href="#卸载pow" class="headerlink" title="卸载pow"></a>卸载pow</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl get.pow.cx/uninstall.sh | sh</span><br></pre></td></tr></table></figure>
+<p>###在rvm环境下的配置<br>需要在每个app中设置powenv或是powrc<br><figure class="highlight bash"><figcaption><span>.powenv</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># detect `$rvm_path`</span></span><br><span class="line"><span class="keyword">if</span> [ -z <span class="string">"<span class="variable">$&#123;rvm_path:-&#125;</span>"</span> ] &amp;&amp; [ -x <span class="string">"<span class="variable">$&#123;HOME:-&#125;</span>/.rvm/bin/rvm"</span> ]</span><br><span class="line"><span class="keyword">then</span> rvm_path=<span class="string">"<span class="variable">$&#123;HOME:-&#125;</span>/.rvm"</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="keyword">if</span> [ -z <span class="string">"<span class="variable">$&#123;rvm_path:-&#125;</span>"</span> ] &amp;&amp; [ -x <span class="string">"/usr/local/rvm/bin/rvm"</span> ]</span><br><span class="line"><span class="keyword">then</span> rvm_path=<span class="string">"/usr/local/rvm"</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># load environment of current project ruby</span></span><br><span class="line"><span class="keyword">if</span></span><br><span class="line">  [ -n <span class="string">"<span class="variable">$&#123;rvm_path:-&#125;</span>"</span> ] &amp;&amp;</span><br><span class="line">  [ -x <span class="string">"<span class="variable">$&#123;rvm_path:-&#125;</span>/bin/rvm"</span> ] &amp;&amp;</span><br><span class="line">  rvm_project_environment=`<span class="string">"<span class="variable">$&#123;rvm_path:-&#125;</span>/bin/rvm"</span> . <span class="keyword">do</span> rvm env --path 2&gt;/dev/null` &amp;&amp;</span><br><span class="line">  [ -n <span class="string">"<span class="variable">$&#123;rvm_project_environment:-&#125;</span>"</span> ] &amp;&amp;</span><br><span class="line">  [ -s <span class="string">"<span class="variable">$&#123;rvm_project_environment:-&#125;</span>"</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"RVM loading: <span class="variable">$&#123;rvm_project_environment:-&#125;</span>"</span></span><br><span class="line">  \. <span class="string">"<span class="variable">$&#123;rvm_project_environment:-&#125;</span>"</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"RVM project not found at: <span class="variable">$PWD</span>"</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><figcaption><span>.powrc</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> [ -f <span class="string">"<span class="variable">$rvm_path</span>/scripts/rvm"</span> ] &amp;&amp; [ -f <span class="string">".rvmrc"</span> ]; <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">source</span> <span class="string">"<span class="variable">$rvm_path</span>/scripts/rvm"</span></span><br><span class="line">  <span class="built_in">source</span> <span class="string">".rvmrc"</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+
+        
+      </div>
+      <footer>
+        
+          
+  
+  <div class="categories">
+    <a href="/categories/rvm/">rvm</a>, <a href="/categories/rvm/pow/">pow</a>, <a href="/categories/rvm/pow/rails/">rails</a>
+  </div>
+
+          
+          <div class="share">
+  
+
+    
+
+    
+
+    
+      <div class="g-plusone"></div>
+      <span style="margin-right:10px"></span>
+
+      <script type="text/javascript">
+        window.___gcfg = {lang: 'en-GB'};
+
+        (function() {
+          var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+          po.src = 'https://apis.google.com/js/platform.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+        })();
+      </script>
+    
+
+    
+      <a href="https://twitter.com/share" class="twitter-share-button" data-via="halfer53">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    
+  
+</div>
+          
+<nav class="article-nav clearfix">
+ 
+ <div class="article-prev">
+ <a href="/2014/08/30/2014-08-30-make-octopress/" title="制作octopress">
+  <i class="fa fa-long-arrow-left"></i>
+  <span>
+  制作octopress</span>
+</a>
+</div>
+
+
+<div class="article-next">
+<a href="/2013/11/29/2013-11-29-about-pagination-on-rails/" title="关于Rails下的分页数据">
+ <span>关于Rails下的分页数据
+</span>
+<i class="fa fa-long-arrow-right"></i>
+</a>
+</div>
+
+</nav>
+
+        
+        <div class="clearfix"></div>
+      </footer>
+    </div>
+</article>
+
+
+<section id="comment">
+  <h2 class="title">Comments</h2>
+
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright"><div class="padding">
+	
+	  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:hiyenwong.github.io">
+  </form>
+</div>
+	
+	  
+<div class="widget recent-post">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2019/05/25/gradle-new-project/">gradle项目创建</a>
+      </li>
+    
+      <li>
+        <a href="/2014/12/04/redis/">redis at rails </a>
+      </li>
+    
+      <li>
+        <a href="/2014/08/30/2014-08-30-make-octopress/">制作octopress</a>
+      </li>
+    
+      <li>
+        <a href="/2014/03/20/2014-03-20-pow-for-mac/">pow for mac</a>
+      </li>
+    
+      <li>
+        <a href="/2013/11/29/2013-11-29-about-pagination-on-rails/">关于Rails下的分页数据</a>
+      </li>
+    
+  </ul>
+</div>
+
+	
+	  
+<div class="widget category">
+  <h3 class="title">Categories</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/linux/redhat/RHCE/">RHCE</a><small>1</small></li>
+  
+    <li><a href="/categories/TDD/Rails/">Rails</a><small>1</small></li>
+  
+    <li><a href="/categories/Rails/">Rails</a><small>3</small></li>
+  
+    <li><a href="/categories/TDD/">TDD</a><small>1</small></li>
+  
+    <li><a href="/categories/constant/">constant</a><small>1</small></li>
+  
+    <li><a href="/categories/rails/ruby/post/mvc/controller/">controller</a><small>1</small></li>
+  
+    <li><a href="/categories/git/">git</a><small>1</small></li>
+  
+    <li><a href="/categories/json/jquery/javascript/">javascript</a><small>1</small></li>
+  
+    <li><a href="/categories/json/jquery/">jquery</a><small>1</small></li>
+  
+    <li><a href="/categories/json/">json</a><small>1</small></li>
+  
+    <li><a href="/categories/vim/linux/">linux</a><small>1</small></li>
+  
+    <li><a href="/categories/linux/">linux</a><small>1</small></li>
+  
+    <li><a href="/categories/mamp/mysql/ruby/mac/">mac</a><small>1</small></li>
+  
+    <li><a href="/categories/mamp/">mamp</a><small>1</small></li>
+  
+    <li><a href="/categories/Rails/ruby/model/migration/">migration</a><small>1</small></li>
+  
+    <li><a href="/categories/Rails/model/">model</a><small>1</small></li>
+  
+    <li><a href="/categories/Rails/ruby/model/">model</a><small>1</small></li>
+  
+    <li><a href="/categories/rails/ruby/post/mvc/">mvc</a><small>1</small></li>
+  
+    <li><a href="/categories/mamp/mysql/">mysql</a><small>1</small></li>
+  
+    <li><a href="/categories/rails/pagination/">pagination</a><small>1</small></li>
+  
+    <li><a href="/categories/php/">php</a><small>1</small></li>
+  
+    <li><a href="/categories/rails/ruby/post/">post</a><small>1</small></li>
+  
+    <li><a href="/categories/rvm/pow/">pow</a><small>1</small></li>
+  
+    <li><a href="/categories/rails/">rails</a><small>3</small></li>
+  
+    <li><a href="/categories/rvm/pow/rails/">rails</a><small>1</small></li>
+  
+    <li><a href="/categories/redis/rails/">rails</a><small>1</small></li>
+  
+    <li><a href="/categories/constant/rails/">rails</a><small>1</small></li>
+  
+    <li><a href="/categories/linux/redhat/">redhat</a><small>1</small></li>
+  
+    <li><a href="/categories/redis/">redis</a><small>1</small></li>
+  
+    <li><a href="/categories/TDD/Rails/test/ruby/rspc/">rspc</a><small>1</small></li>
+  
+    <li><a href="/categories/Rails/model/ruby/">ruby</a><small>1</small></li>
+  
+    <li><a href="/categories/Rails/ruby/">ruby</a><small>2</small></li>
+  
+    <li><a href="/categories/TDD/Rails/test/ruby/">ruby</a><small>1</small></li>
+  
+    <li><a href="/categories/rails/ruby/">ruby</a><small>2</small></li>
+  
+    <li><a href="/categories/mamp/mysql/ruby/">ruby</a><small>1</small></li>
+  
+    <li><a href="/categories/rails/pagination/ruby/">ruby</a><small>1</small></li>
+  
+    <li><a href="/categories/rvm/">rvm</a><small>1</small></li>
+  
+    <li><a href="/categories/TDD/Rails/test/">test</a><small>1</small></li>
+  
+    <li><a href="/categories/vim/">vim</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+	
+	  
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  
+    <a href="/tags/gradle/">gradle<small>1</small></a>
+  
+    <a href="/tags/java/">java<small>1</small></a>
+  
+    <a href="/tags/kotlin/">kotlin<small>1</small></a>
+  
+</div>
+
+	
+</div></aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="padding">
+	<div class="alignleft">
+	  
+	  &copy; 2019 Hi Yen Wong
+	  
+	  Powerd by <a href="http://hexo.io/" target="_blank">hexo</a>
+	  and Theme by <a href="https://github.com/halfer53/metro-light" target="_blank">metro-light</a>
+	</div>
+
+	<div class="alignright">
+		
+		
+		
+		
+		
+		
+		
+	</div>
+
+	<div class="clearfix"></div>
+</div>
+
+<div class="scroll-top"><i class="fa fa-arrow-circle-up"></i></div></footer>
+  
+
+
+<link href="https://opensource.keycdn.com/fontawesome/4.6.3/font-awesome.min.css" rel="stylesheet">
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.1.min.js"></script>
+
+
+
+<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.0.4/jquery.imagesloaded.js"></script> -->
+<!-- <script src="/js/gallery.js"></script> -->
+
+
+
+<script type="text/javascript">
+$(window).scroll(function() {
+
+    if($(this).scrollTop() > 400) {
+        $('.scroll-top').fadeIn(200);
+    } else {
+        $('.scroll-top').fadeOut(200);
+    }
+});
+
+$('.scroll-top').bind('click', function(e) {
+    e.preventDefault();
+    $('body,html').animate({scrollTop:0},200);
+});
+</script>
+
+
+</body>
+</html>
