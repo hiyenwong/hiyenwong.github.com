@@ -5,7 +5,7 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>pg 链接 mysql | 無名之島</title>
+  <title>pg 外链pg | 無名之島</title>
   <meta name="author" content="Hi Yen Wong">
   
   <meta name="description" content="通过外部表的方式连接其他postgresql服务器
@@ -20,7 +20,7 @@ select * from pg_available_extensions;
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="pg 链接 mysql">
+  <meta property="og:title" content="pg 外链pg">
   <meta property="og:site_name" content="無名之島">
 
   
@@ -97,7 +97,7 @@ body{ -webkit-animation: bugfix infinite 1s; }
   	<div class="inner">
       <div class="padding">
     		
-          <h1>pg 链接 mysql</h1>
+          <h1>pg 外链pg</h1>
           <ul>
             <li>
               <span class="heading-span">Posted on: </span>
@@ -153,6 +153,7 @@ body{ -webkit-animation: bugfix infinite 1s; }
 <p>注意这里创建外部表,需要跟对应的数据表结构保持一致</p>
 <p>当你通过super user创建完外部表之后,需要将数据表进行赋权给其他用户</p>
 <p>ALTER FOREIGN TABLE  tbl_fdw OWNER TO new_owner</p>
+<p>postgres=# drop foreign table tbl_kenyon;<br>DROP FOREIGN TABLE<br>postgres=# drop user mapping for postgres server server_remote_71 ;<br>DROP USER MAPPING<br>postgres=# drop server server_remote_71 ;<br>DROP SERVER<br>postgres=# drop extension postgres_fdw ;<br>DROP EXTENSION</p>
 
         
       </div>
@@ -162,7 +163,7 @@ body{ -webkit-animation: bugfix infinite 1s; }
           
   
   <div class="tags">
-    <a href="/tags/postgresql/">postgresql</a>, <a href="/tags/mysql/">mysql</a>, <a href="/tags/database/">database</a>
+    <a href="/tags/postgresql/">postgresql</a>, <a href="/tags/database/">database</a>
   </div>
 
           <div class="share">
@@ -236,7 +237,7 @@ body{ -webkit-animation: bugfix infinite 1s; }
   <ul class="entry">
     
       <li>
-        <a href="/2019/06/05/pg-dwf/">pg 链接 mysql</a>
+        <a href="/2019/06/05/pg-dwf/">pg 外链pg</a>
       </li>
     
       <li>
@@ -266,9 +267,9 @@ body{ -webkit-animation: bugfix infinite 1s; }
   
     <li><a href="/categories/linux/redhat/RHCE/">RHCE</a><small>1</small></li>
   
-    <li><a href="/categories/Rails/">Rails</a><small>3</small></li>
-  
     <li><a href="/categories/TDD/Rails/">Rails</a><small>1</small></li>
+  
+    <li><a href="/categories/Rails/">Rails</a><small>3</small></li>
   
     <li><a href="/categories/TDD/">TDD</a><small>1</small></li>
   
@@ -294,9 +295,9 @@ body{ -webkit-animation: bugfix infinite 1s; }
   
     <li><a href="/categories/Rails/ruby/model/migration/">migration</a><small>1</small></li>
   
-    <li><a href="/categories/Rails/ruby/model/">model</a><small>1</small></li>
-  
     <li><a href="/categories/Rails/model/">model</a><small>1</small></li>
+  
+    <li><a href="/categories/Rails/ruby/model/">model</a><small>1</small></li>
   
     <li><a href="/categories/rails/ruby/post/mvc/">mvc</a><small>1</small></li>
   
@@ -310,13 +311,13 @@ body{ -webkit-animation: bugfix infinite 1s; }
   
     <li><a href="/categories/rvm/pow/">pow</a><small>1</small></li>
   
-    <li><a href="/categories/rails/">rails</a><small>3</small></li>
-  
     <li><a href="/categories/redis/rails/">rails</a><small>1</small></li>
   
-    <li><a href="/categories/constant/rails/">rails</a><small>1</small></li>
-  
     <li><a href="/categories/rvm/pow/rails/">rails</a><small>1</small></li>
+  
+    <li><a href="/categories/rails/">rails</a><small>3</small></li>
+  
+    <li><a href="/categories/constant/rails/">rails</a><small>1</small></li>
   
     <li><a href="/categories/linux/redhat/">redhat</a><small>1</small></li>
   
@@ -324,17 +325,17 @@ body{ -webkit-animation: bugfix infinite 1s; }
   
     <li><a href="/categories/TDD/Rails/test/ruby/rspc/">rspc</a><small>1</small></li>
   
-    <li><a href="/categories/rails/pagination/ruby/">ruby</a><small>1</small></li>
-  
-    <li><a href="/categories/rails/ruby/">ruby</a><small>2</small></li>
-  
-    <li><a href="/categories/TDD/Rails/test/ruby/">ruby</a><small>1</small></li>
+    <li><a href="/categories/Rails/ruby/">ruby</a><small>2</small></li>
   
     <li><a href="/categories/Rails/model/ruby/">ruby</a><small>1</small></li>
   
+    <li><a href="/categories/TDD/Rails/test/ruby/">ruby</a><small>1</small></li>
+  
     <li><a href="/categories/mamp/mysql/ruby/">ruby</a><small>1</small></li>
   
-    <li><a href="/categories/Rails/ruby/">ruby</a><small>2</small></li>
+    <li><a href="/categories/rails/pagination/ruby/">ruby</a><small>1</small></li>
+  
+    <li><a href="/categories/rails/ruby/">ruby</a><small>2</small></li>
   
     <li><a href="/categories/rvm/">rvm</a><small>1</small></li>
   
@@ -361,8 +362,6 @@ body{ -webkit-animation: bugfix infinite 1s; }
     <a href="/tags/kotlin/">kotlin<small>1</small></a>
   
     <a href="/tags/ldap/">ldap<small>1</small></a>
-  
-    <a href="/tags/mysql/">mysql<small>1</small></a>
   
     <a href="/tags/notebook/">notebook<small>1</small></a>
   
