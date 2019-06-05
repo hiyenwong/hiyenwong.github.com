@@ -5,13 +5,22 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>controller | 無名之島</title>
+  <title>pg 链接 mysql | 無名之島</title>
   <meta name="author" content="Hi Yen Wong">
+  
+  <meta name="description" content="通过外部表的方式连接其他postgresql服务器
+install 
+安装相关插件 针对centos
+yum install postgresql96-contrib -y
+配置
+查看外部表插件是否有安装
+select * from pg_available_extensions;
+为你所需要的数据">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="pg 链接 mysql">
   <meta property="og:site_name" content="無名之島">
 
   
@@ -88,28 +97,11 @@ body{ -webkit-animation: bugfix infinite 1s; }
   	<div class="inner">
       <div class="padding">
     		
-          <h2></h2>
-        
-      </div>
-  	</div>
-  </div>
-  <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper" class="padding">
-<h2 class="archive-title category">controller</h2>
-
-
-  <div class="archive">
-    
-      <article class="post">
-        <div class="post-content-index">
-        <header>
-            
-              <h1 class="metro-title transition"><a href="/2013/08/11/2013-08-11-rails-post/" target="_blank">rails中post</a></h1>
-            
+          <h1>pg 链接 mysql</h1>
           <ul>
             <li>
               <span class="heading-span">Posted on: </span>
-              <time datetime="2013-08-11T14:15:00.000Z">2013-08-11</time>
+              <time datetime="2019-06-05T03:32:19.000Z">2019-06-05</time>
             </li>
             
               <li>
@@ -124,16 +116,111 @@ body{ -webkit-animation: bugfix infinite 1s; }
             <li>
               <span class="heading-span">With: </span>
               
-          </li></ul>
-        </header>
-      </div></article>
-    
+            </li>
+          </ul>
+        
+      </div>
+  	</div>
+  </div>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper" class="padding"><article class="post">
+  
+  
+    <div class="post-content">
+  
+      
+      <div class="entry">
+        
+          <p>通过外部表的方式连接其他postgresql服务器</p>
+<p>install </p>
+<p>安装相关插件 针对centos</p>
+<p>yum install postgresql96-contrib -y</p>
+<p>配置</p>
+<p>查看外部表插件是否有安装</p>
+<p>select * from pg_available_extensions;</p>
+<p>为你所需要的数据库创建extension</p>
+<p>create extension postgres_fdw;     </p>
+<p>查看是否有了插件</p>
+<p>select * from pg_extension;</p>
+<p>创建服务</p>
+<p>create server server_remote_70 foreign data wrapper postgres_fdw options(host ‘192.168.10.8’,port ‘5432’,dbname ‘postgres’);</p>
+<p>创建用户可以访问的外链服务</p>
+<p>create user mapping for postgres server server_remote_70 options(user ‘postgres’,password ‘postgres’);</p>
+<p>查看</p>
+<p>select * from pg_user_mappings; </p>
+<p>创建外部表</p>
+<p>CREATE FOREIGN TABLE tbl_fdw(a int) server server_remote_70 options (schema_name ‘public’,table_name ‘tb1’);  </p>
+<p>注意这里创建外部表,需要跟对应的数据表结构保持一致</p>
+<p>当你通过super user创建完外部表之后,需要将数据表进行赋权给其他用户</p>
+<p>ALTER FOREIGN TABLE  tbl_fdw OWNER TO new_owner</p>
+
+        
+      </div>
+      <footer>
+        
+          
+          
+  
+  <div class="tags">
+    <a href="/tags/postgresql/">postgresql</a>, <a href="/tags/mysql/">mysql</a>, <a href="/tags/database/">database</a>
   </div>
 
+          <div class="share">
+  
+
+    
+
+    
+
+    
+      <div class="g-plusone"></div>
+      <span style="margin-right:10px"></span>
+
+      <script type="text/javascript">
+        window.___gcfg = {lang: 'en-GB'};
+
+        (function() {
+          var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+          po.src = 'https://apis.google.com/js/platform.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+        })();
+      </script>
+    
+
+    
+      <a href="https://twitter.com/share" class="twitter-share-button" data-via="halfer53">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    
+  
+</div>
+          
+<nav class="article-nav clearfix">
+ 
+
+<div class="article-next">
+<a href="/2019/06/03/jupyterhub/" title="jupyterhub 安装和配置">
+ <span>jupyterhub 安装和配置
+</span>
+<i class="fa fa-long-arrow-right"></i>
+</a>
+</div>
+
+</nav>
+
+        
+        <div class="clearfix"></div>
+      </footer>
+    </div>
+</article>
 
 
+<section id="comment">
+  <h2 class="title">Comments</h2>
 
-   </div></div>
+  
+</section>
+
+</div></div>
     <aside id="sidebar" class="alignright"><div class="padding">
 	
 	  <div class="search">

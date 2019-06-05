@@ -105,6 +105,83 @@ body{ -webkit-animation: bugfix infinite 1s; }
           <!-- <div class="icon"></div> -->
             
     
+      <h1 class="metro-title transition"><a href="/2019/06/05/pg-dwf/">pg 链接 mysql</a></h1>
+    
+  
+          <ul>
+            <li>
+              <span class="heading-span">Posted on: </span>
+              <time datetime="2019-06-05T03:32:19.000Z">2019-06-05</time>
+            </li>
+            
+              <li>
+                <span class="heading-span">By: </span>
+
+                
+                  <a href="/">Hi Yen Wong</a>
+                
+
+              </li>
+            
+            <li>
+              <span class="heading-span">With: </span>
+              
+          </li></ul>
+        </header>
+      
+      <div class="entry">
+        
+          
+            <p>通过外部表的方式连接其他postgresql服务器</p>
+<p>install </p>
+<p>安装相关插件 针对centos</p>
+<p>yum install postgresql96-contrib -y</p>
+<p>配置</p>
+<p>查看外部表插件是否有安装</p>
+<p>select * from pg_available_extensions;</p>
+<p>为你所需要的数据库创建extension</p>
+<p>create extension postgres_fdw;     </p>
+<p>查看是否有了插件</p>
+<p>select * from pg_extension;</p>
+<p>创建服务</p>
+<p>create server server_remote_70 foreign data wrapper postgres_fdw options(host ‘192.168.10.8’,port ‘5432’,dbname ‘postgres’);</p>
+<p>创建用户可以访问的外链服务</p>
+<p>create user mapping for postgres server server_remote_70 options(user ‘postgres’,password ‘postgres’);</p>
+<p>查看</p>
+<p>select * from pg_user_mappings; </p>
+<p>创建外部表</p>
+<p>CREATE FOREIGN TABLE tbl_fdw(a int) server server_remote_70 options (schema_name ‘public’,table_name ‘tb1’);  </p>
+<p>注意这里创建外部表,需要跟对应的数据表结构保持一致</p>
+<p>当你通过super user创建完外部表之后,需要将数据表进行赋权给其他用户</p>
+<p>ALTER FOREIGN TABLE  tbl_fdw OWNER TO new_owner</p>
+
+          
+        
+      </div>
+      <footer>
+        
+          <div class="alignright">
+            <a href="/2019/06/05/pg-dwf/#more" class="more-link">Continue Reading<i class="fa fa-long-arrow-right fa-1"></i></a>
+          </div>
+        
+        <div class="clearfix"></div>
+      </footer>
+    </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  
+    <div class="post-content-index">
+  
+      
+        <header>
+          <!-- <div class="icon"></div> -->
+            
+    
       <h1 class="metro-title transition"><a href="/2019/06/03/jupyterhub/">jupyterhub 安装和配置</a></h1>
     
   
@@ -723,64 +800,6 @@ body{ -webkit-animation: bugfix infinite 1s; }
 
 
 
-  <article class="post">
-  
-  
-    <div class="post-content-index">
-  
-      
-        <header>
-          <!-- <div class="icon"></div> -->
-            
-    
-      <h1 class="metro-title transition"><a href="/2013/07/02/2013-07-02-destroy/">如何摧毁Rails中的元素</a></h1>
-    
-  
-          <ul>
-            <li>
-              <span class="heading-span">Posted on: </span>
-              <time datetime="2013-07-02T06:16:00.000Z">2013-07-02</time>
-            </li>
-            
-              <li>
-                <span class="heading-span">By: </span>
-
-                
-                  <a href="/">Hi Yen Wong</a>
-                
-
-              </li>
-            
-            <li>
-              <span class="heading-span">With: </span>
-              
-          </li></ul>
-        </header>
-      
-      <div class="entry">
-        
-          
-            <p>##Destroy##<br>我们往往会生成比如controller,model或是db 文件，但后来发现我们不需要了，想重来，怎么办呢？<br>所以我们需要destroy</p>
-<p>##删除model或是controller##<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rails destroy model MODEL_NAME|CONTROLLER_NAME</span><br></pre></td></tr></table></figure></p>
-<p>##删除db:migration##<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rails d migration MIGRATION_NAME</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      </div>
-      <footer>
-        
-          <div class="alignright">
-            <a href="/2013/07/02/2013-07-02-destroy/#more" class="more-link">Continue Reading<i class="fa fa-long-arrow-right fa-1"></i></a>
-          </div>
-        
-        <div class="clearfix"></div>
-      </footer>
-    </div>
-</article>
-
-
-
-
 
 <nav id="pagination">
   
@@ -804,6 +823,10 @@ body{ -webkit-animation: bugfix infinite 1s; }
   <ul class="entry">
     
       <li>
+        <a href="/2019/06/05/pg-dwf/">pg 链接 mysql</a>
+      </li>
+    
+      <li>
         <a href="/2019/06/03/jupyterhub/">jupyterhub 安装和配置</a>
       </li>
     
@@ -819,10 +842,6 @@ body{ -webkit-animation: bugfix infinite 1s; }
         <a href="/2014/03/20/2014-03-20-pow-for-mac/">pow for mac</a>
       </li>
     
-      <li>
-        <a href="/2013/11/29/2013-11-29-about-pagination-on-rails/">关于Rails下的分页数据</a>
-      </li>
-    
   </ul>
 </div>
 
@@ -834,9 +853,9 @@ body{ -webkit-animation: bugfix infinite 1s; }
   
     <li><a href="/categories/linux/redhat/RHCE/">RHCE</a><small>1</small></li>
   
-    <li><a href="/categories/TDD/Rails/">Rails</a><small>1</small></li>
-  
     <li><a href="/categories/Rails/">Rails</a><small>3</small></li>
+  
+    <li><a href="/categories/TDD/Rails/">Rails</a><small>1</small></li>
   
     <li><a href="/categories/TDD/">TDD</a><small>1</small></li>
   
@@ -862,9 +881,9 @@ body{ -webkit-animation: bugfix infinite 1s; }
   
     <li><a href="/categories/Rails/ruby/model/migration/">migration</a><small>1</small></li>
   
-    <li><a href="/categories/Rails/model/">model</a><small>1</small></li>
-  
     <li><a href="/categories/Rails/ruby/model/">model</a><small>1</small></li>
+  
+    <li><a href="/categories/Rails/model/">model</a><small>1</small></li>
   
     <li><a href="/categories/rails/ruby/post/mvc/">mvc</a><small>1</small></li>
   
@@ -880,9 +899,9 @@ body{ -webkit-animation: bugfix infinite 1s; }
   
     <li><a href="/categories/rails/">rails</a><small>3</small></li>
   
-    <li><a href="/categories/constant/rails/">rails</a><small>1</small></li>
-  
     <li><a href="/categories/redis/rails/">rails</a><small>1</small></li>
+  
+    <li><a href="/categories/constant/rails/">rails</a><small>1</small></li>
   
     <li><a href="/categories/rvm/pow/rails/">rails</a><small>1</small></li>
   
@@ -892,17 +911,17 @@ body{ -webkit-animation: bugfix infinite 1s; }
   
     <li><a href="/categories/TDD/Rails/test/ruby/rspc/">rspc</a><small>1</small></li>
   
-    <li><a href="/categories/rails/ruby/">ruby</a><small>2</small></li>
-  
-    <li><a href="/categories/Rails/model/ruby/">ruby</a><small>1</small></li>
-  
     <li><a href="/categories/rails/pagination/ruby/">ruby</a><small>1</small></li>
   
-    <li><a href="/categories/Rails/ruby/">ruby</a><small>2</small></li>
+    <li><a href="/categories/rails/ruby/">ruby</a><small>2</small></li>
   
     <li><a href="/categories/TDD/Rails/test/ruby/">ruby</a><small>1</small></li>
   
+    <li><a href="/categories/Rails/model/ruby/">ruby</a><small>1</small></li>
+  
     <li><a href="/categories/mamp/mysql/ruby/">ruby</a><small>1</small></li>
+  
+    <li><a href="/categories/Rails/ruby/">ruby</a><small>2</small></li>
   
     <li><a href="/categories/rvm/">rvm</a><small>1</small></li>
   
@@ -918,6 +937,8 @@ body{ -webkit-animation: bugfix infinite 1s; }
 <div class="widget tag">
   <h3 class="title">Tags</h3>
   
+    <a href="/tags/database/">database<small>1</small></a>
+  
     <a href="/tags/gradle/">gradle<small>1</small></a>
   
     <a href="/tags/java/">java<small>1</small></a>
@@ -928,7 +949,11 @@ body{ -webkit-animation: bugfix infinite 1s; }
   
     <a href="/tags/ldap/">ldap<small>1</small></a>
   
+    <a href="/tags/mysql/">mysql<small>1</small></a>
+  
     <a href="/tags/notebook/">notebook<small>1</small></a>
+  
+    <a href="/tags/postgresql/">postgresql<small>1</small></a>
   
     <a href="/tags/python/">python<small>1</small></a>
   
